@@ -1,0 +1,12 @@
+
+##### 1. Generate wildcard constants #####
+MGY_RELEASE = ["2024_04"]
+
+wildcard_constraints:
+    mgy_release="|".join(MGY_RELEASE),
+
+rule all:
+    input:
+        expand("resources/{mgy_release}/mgy_clusters.flag", mgy_release=MGY_RELEASE),
+
+include: "rules/mgnify_database.smk"
