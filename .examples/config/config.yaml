@@ -1,0 +1,3 @@
+input_folder : "../data/external"
+samples : "samples.csv"
+mgy_release : "2024_04"
