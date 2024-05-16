@@ -1,25 +1,9 @@
 name: mgnify
 channels:
-  - biocore
+  - bioconda
   - conda-forge
+  - defaults
 dependencies:
-  - _libgcc_mutex=0.1=conda_forge
-  - _openmp_mutex=4.5=2_gnu
-  - ca-certificates=2024.2.2=hbcca054_0
-  - gettext=0.22.5=h59595ed_2
-  - gettext-tools=0.22.5=h59595ed_2
-  - gzip=1.13=hd590300_0
-  - hmmer=3.1b2=0
-  - libasprintf=0.22.5=h661eb56_2
-  - libasprintf-devel=0.22.5=h661eb56_2
-  - libgcc-ng=13.2.0=h77fa898_7
-  - libgettextpo=0.22.5=h59595ed_2
-  - libgettextpo-devel=0.22.5=h59595ed_2
-  - libgomp=13.2.0=h77fa898_7
-  - libidn2=2.3.7=hd590300_0
-  - libstdcxx-ng=13.2.0=hc0a3c3a_7
-  - libunistring=0.9.10=h7f98852_0
-  - libzlib=1.2.13=hd590300_5
-  - openssl=3.3.0=hd590300_0
-  - wget=1.21.4=hda4d442_0
-  - zlib=1.2.13=hd590300_5
+  - gzip
+  - hmmer
+  - wget

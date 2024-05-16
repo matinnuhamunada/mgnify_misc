@@ -1,12 +1,30 @@
 
-##### 1. Generate wildcard constants #####
-MGY_RELEASE = ["2024_04"]
+from pathlib import Path
+import pandas as pd
+
+##### 1. Load config #####
+configfile: "config/config.yaml"
+config_path = Path("config")
+input_path = config_path / config["input_folder"]
+
+##### 2. Generate wildcard constants #####
+if "mgy_release" in config.keys():
+    MGY_RELEASE = [config["mgy_release"]]
+else:
+    MGY_RELEASE = ["2024_04"]
+
+
+sample_path = config_path / config["samples"]
+df_samples = pd.read_csv(sample_path).set_index("sequence_id", drop=False)
+
+QUERY_NAME = df_samples["sequence_id"].tolist()
+
 
 wildcard_constraints:
     mgy_release="|".join(MGY_RELEASE),
 
 rule all:
     input:
-        expand("resources/{mgy_release}/mgy_clusters.flag", mgy_release=MGY_RELEASE),
-
+        expand("resources/mgnify/{mgy_release}/mgy_assemblies.flag", mgy_release=MGY_RELEASE),
+        expand("data/processed/{name}/{name}_vs_{mgy_release}_phmmer_search.tbl", mgy_release=MGY_RELEASE, name=QUERY_NAME)
 include: "rules/mgnify_database.smk"
